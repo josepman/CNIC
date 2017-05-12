@@ -1,0 +1,38 @@
+ORGANIZACION PENSADA PARA PROCESAMIENTO
+
+UNA CARPETA QUE CONTENGA LAS SIGUIENTES SUBCARPETAS:
+
+	- T1
+	- FING (FINGERTAPPING)
+	- GORDO
+	- DTI
+
+CADA SUBCARPETA DEBE CONTENER TODOS LOS NIFTI Y LOS LOGS ASOCIADOS CON LOS SIGUIENTES NOMBRES:
+	NIFTI:	fmripc_0001_T1_d1.nii
+			fmripc_0001_finger_d1.nii 	
+			fmripc_0001_gordo_d1.nii 		
+			fmripc_0001_DTI_d1.nii
+
+	LOGS:	fmripc_0001_T1_d1.log
+			fmripc_0001_finger_d1.log
+			fmripc_0001_gordo_d1.log
+			fmripc_0001_DTI_d1.log
+
+Todos ellos se nombrarán como XX a partir de ahora
+
+
+				/////////   PIPELINE   ///////
+1º) BET T1: bet.sh  
+	--> obtenemos 		XX_T1_d1_brain.nii.gz
+	¿Hacemos uno promedio con los 4 dias o utilizamos los 4, uno para cada dia?
+
+2º) Prepare Fieldmap images to registrarion:
+	---> obtenemos XX_FIELDMAP_brain_nii.gz y datos de entrada para el FNIRT
+
+3º) Registros
+
+4º) Matrices de afinidad
+
+5º) SPLIT-MERGE GORDO: spmerge.sh
+	---> obtenemos XX_rest-pre.nii.gz, XX_sham/ripc.nii.gz y XX_rest-post.nii.gz
+
